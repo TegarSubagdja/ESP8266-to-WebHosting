@@ -9,6 +9,7 @@ const char* host = ".000webhostapp.com";
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
+  pinMode(D1, INPUT);
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) {
     Serial.print(".");
@@ -24,7 +25,7 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
 
-  int ldr = analogRead(A0);
+  int pir = digitalRead(D1);
 
   WiFiClient client;
   const int httpPort = 80;
@@ -35,13 +36,12 @@ void loop() {
 
   String link;
   HTTPClient http;
-  link = "http://" + String(host) + "/kirimdata.php?ldr=" + String(ldr);
+  link = "http://" + String(host) + "/kirimdata.php?pir=" + String(pir);
   http.begin(client, link);
   http.GET();
 
   String respon = http.getString();
   Serial.println(respon);
   http.end();
-
   delay(1000);
 }
