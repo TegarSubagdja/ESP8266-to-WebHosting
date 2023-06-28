@@ -30,7 +30,7 @@
             <table class="table table-bordered">
                 <thead class="thead-dark">
                     <tr>
-                        <th class='align-middle text-center'>LDR Value</th>
+                        <th class='align-middle text-center'>PIR Status</th>
                         <th class='align-middle text-center'>Date and Time</th>
                     </tr>
                 </thead>
